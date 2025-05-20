@@ -234,7 +234,7 @@ const createControlStates = async (adapter, productKey, deviceKey, type) => {
               read: true,
               write: true,
               min: 0,
-              max: type == "ace" || type == "solarflow" ? 900 : 1200,
+              max: 2400,
               step: type == "ace" || type == "solarflow" ? 100 : 1,
               unit: "W"
             },
