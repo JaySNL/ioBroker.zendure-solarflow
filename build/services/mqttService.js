@@ -918,7 +918,7 @@ const setInputLimit = async (adapter2, productKey, deviceKey, limit) => {
     } else {
       limit = 0;
     }
-    let maxLimit = 900;
+    let maxLimit = 2400;
     const currentLimit = (_a = await adapter2.getStateAsync(productKey + "." + deviceKey + ".inputLimit")) == null ? void 0 : _a.val;
     const productName = (_c = (_b = await adapter2.getStateAsync(productKey + "." + deviceKey + ".productName")) == null ? void 0 : _b.val) == null ? void 0 : _c.toString().toLowerCase();
     if (productName == null ? void 0 : productName.includes("hyper")) {
