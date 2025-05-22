@@ -23,8 +23,12 @@ export interface ISolarFlowMqttProperties {
   solarInputPower?: number;
   pvPower1?: number;
   pvPower2?: number;
+  pvPower3?: number;
+  pvPower4?: number;
   solarPower1?: number;
   solarPower2?: number;
+  solarPower3?: number;
+  solarPower4?: number;
   remainOutTime?: number;
   remainInputTime?: number;
   socSet?: number;
