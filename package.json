@@ -1,10 +1,10 @@
 {
   "name": "iobroker.zendure-solarflow",
-  "version": "1.13.1",
+  "version": "1.15.0",
   "description": "zendure-solarflow",
   "author": {
-    "name": "Peter",
-    "email": "peter.frommert@outlook.com"
+    "name": "Jooshua",
+    "email": "jsfranssen@gmail.com"
   },
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/nograx/ioBroker.zendure-solarflow",

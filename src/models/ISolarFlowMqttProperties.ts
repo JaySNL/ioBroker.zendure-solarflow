@@ -14,6 +14,7 @@ export interface ISolarFlowMqttProperties {
   packState?: number;
   pass?: number;
   passMode?: number;
+  power?: number;
   autoRecover?: number;
   outputHomePower?: number;
   outputLimit?: number;

@@ -234,7 +234,7 @@ const createControlStates = async (adapter, productKey, deviceKey, type) => {
               read: true,
               write: true,
               min: 0,
-              max: 2400,
+              max: type == "ace" || type == "solarflow" ? 900 : 1200,
               step: type == "ace" || type == "solarflow" ? 100 : 1,
               unit: "W"
             },
@@ -276,11 +276,16 @@ const createControlStates = async (adapter, productKey, deviceKey, type) => {
               desc: "acMode",
               role: "switch",
               min: 0,
-              max: 2,
+              max: type == "ace" ? 3 : 2,
               step: 1,
               read: true,
               write: true,
-              states: {
+              states: type == "ace" ? {
+                0: "Nothing",
+                1: "Normal work mode",
+                2: "Never turn off",
+                3: "Automatic shutdown AC"
+              } : {
                 0: "Nothing",
                 1: "AC input mode",
                 2: "AC output mode"

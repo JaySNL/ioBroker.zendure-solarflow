@@ -34,7 +34,9 @@ const calculationStateKeys = [
   "solarInput",
   "gridInput",
   "pvPower1",
-  "pvPower2"
+  "pvPower2",
+  "pvPower3",
+  "pvPower4"
 ];
 const setEnergyWhMax = async (adapter, productKey, deviceKey) => {
   const currentEnergyState = await (adapter == null ? void 0 : adapter.getStateAsync(
@@ -215,14 +217,22 @@ const calculateEnergy = async (adapter, productKey, deviceKey) => {
     let stateNameEnergyWh = "";
     let stateNameEnergykWh = "";
     let stateNamePower = "";
-    if (stateKey == "pvPower1") {
+    if (stateKey == "1") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv1EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv1EnergyTodaykWh`;
-      stateNamePower = `${productKey}.${deviceKey}.pvPower1`;
-    } else if (stateKey == "pvPower2") {
+      stateNamePower = `${productKey}.${deviceKey}.1`;
+    } else if (stateKey == "2") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv2EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv2EnergyTodaykWh`;
-      stateNamePower = `${productKey}.${deviceKey}.pvPower2`;
+      stateNamePower = `${productKey}.${deviceKey}.2`;
+    } else if (stateKey == "3") {
+      stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv3EnergyTodayWh`;
+      stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv3EnergyTodaykWh`;
+      stateNamePower = `${productKey}.${deviceKey}.3`;
+    } else if (stateKey == "4") {
+      stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv4EnergyTodayWh`;
+      stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv4EnergyTodaykWh`;
+      stateNamePower = `${productKey}.${deviceKey}.4`;
     } else {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.${stateKey}EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.${stateKey}EnergyTodaykWh`;
@@ -278,15 +288,27 @@ const resetValuesForDevice = (adapter, productKey, deviceKey) => {
   calculationStateKeys.forEach(async (stateKey) => {
     let stateNameEnergyWh = "";
     let stateNameEnergykWh = "";
-    if (stateKey == "pvPower1") {
+    let stateNamePower = "";
+    if (stateKey == "1") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv1EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv1EnergyTodaykWh`;
-    } else if (stateKey == "pvPower2") {
+      stateNamePower = `${productKey}.${deviceKey}.1`;
+    } else if (stateKey == "2") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv2EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv2EnergyTodaykWh`;
+      stateNamePower = `${productKey}.${deviceKey}.2`;
+    } else if (stateKey == "pvPower3") {
+      stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv3EnergyTodayWh`;
+      stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv3EnergyTodaykWh`;
+      stateNamePower = `${productKey}.${deviceKey}.3`;
+    } else if (stateKey == "pvPower4") {
+      stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv4EnergyTodayWh`;
+      stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv4EnergyTodaykWh`;
+      stateNamePower = `${productKey}.${deviceKey}.4`;
     } else {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.${stateKey}EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.${stateKey}EnergyTodaykWh`;
+      stateNamePower = `${productKey}.${deviceKey}.${stateKey}Power`;
     }
     await (adapter == null ? void 0 : adapter.setState(stateNameEnergyWh, 0, true));
     await (adapter == null ? void 0 : adapter.setState(stateNameEnergykWh, 0, true));

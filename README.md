@@ -58,6 +58,10 @@ Credits goes to https://github.com/reinhard-brandstaedter/solarflow which helped
 
 ## Changelog
 
+### 1.150 (2025-05-07)
+- adjusted limits for new AC2400 and SF800P
+- added 4 pvPower outputs
+
 ### **WORK IN PROGRESS**
 
 - Fix AC Mode showing unknown parameter on ACE 1500

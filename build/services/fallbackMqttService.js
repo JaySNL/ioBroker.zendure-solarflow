@@ -297,7 +297,7 @@ const onMessage = async (topic, message) => {
         productKey,
         deviceKey,
         "pvPower2",
-        // Reversed to adjust like offical app
+        // Reversed to adjust like offical app (MQTT pvPower1 -> State pvPower2)
         obj.pvPower1
       );
     }
@@ -307,8 +307,28 @@ const onMessage = async (topic, message) => {
         productKey,
         deviceKey,
         "pvPower1",
-        // Reversed to adjust like offical app
+        // Reversed to adjust like offical app (MQTT pvPower2 -> State pvPower1)
         obj.pvPower2
+      );
+    }
+    if ((obj == null ? void 0 : obj.pvPower3) != null && (obj == null ? void 0 : obj.pvPower3) != void 0) {
+      (0, import_adapterService.updateSolarFlowState)(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower4",
+        // Assuming reversal continues (MQTT pvPower3 -> State pvPower4)
+        obj.pvPower3
+      );
+    }
+    if ((obj == null ? void 0 : obj.pvPower4) != null && (obj == null ? void 0 : obj.pvPower4) != void 0) {
+      (0, import_adapterService.updateSolarFlowState)(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower3",
+        // Assuming reversal continues (MQTT pvPower4 -> State pvPower3)
+        obj.pvPower4
       );
     }
     if ((obj == null ? void 0 : obj.solarPower1) != null && (obj == null ? void 0 : obj.solarPower1) != void 0) {
@@ -317,6 +337,7 @@ const onMessage = async (topic, message) => {
         productKey,
         deviceKey,
         "pvPower1",
+        // MQTT solarPower1 -> State pvPower1
         obj.solarPower1
       );
     }
@@ -326,7 +347,28 @@ const onMessage = async (topic, message) => {
         productKey,
         deviceKey,
         "pvPower2",
+        // MQTT solarPower2 -> State pvPower2
         obj.solarPower2
+      );
+    }
+    if ((obj == null ? void 0 : obj.solarPower3) != null && (obj == null ? void 0 : obj.solarPower3) != void 0) {
+      (0, import_adapterService.updateSolarFlowState)(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower3",
+        // MQTT solarPower3 -> State pvPower3
+        obj.solarPower3
+      );
+    }
+    if ((obj == null ? void 0 : obj.solarPower4) != null && (obj == null ? void 0 : obj.solarPower4) != void 0) {
+      (0, import_adapterService.updateSolarFlowState)(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower4",
+        // MQTT solarPower4 -> State pvPower4
+        obj.solarPower4
       );
     }
     if ((obj == null ? void 0 : obj.remainOutTime) != null && (obj == null ? void 0 : obj.remainOutTime) != void 0) {

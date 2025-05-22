@@ -123,6 +123,7 @@ export const sharedStates: ISolarflowState[] = [
     role: "value.power",
     unit: "W",
   },
+  {
     title: "pvPower3",
     nameDe: "Leistung PV 3",
     nameEn: "solar power channel 3",
@@ -130,6 +131,7 @@ export const sharedStates: ISolarflowState[] = [
     role: "value.power",
     unit: "W",
   },
+  {
     title: "pvPower4",
     nameDe: "Leistung PV 4",
     nameEn: "solar power channel 4",

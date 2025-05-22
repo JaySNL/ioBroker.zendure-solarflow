@@ -408,6 +408,7 @@ const resetValuesForDevice = (
   calculationStateKeys.forEach(async (stateKey: string) => {
     let stateNameEnergyWh = "";
     let stateNameEnergykWh = "";
+    let stateNamePower = "";
 
     if (stateKey == "1") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv1EnergyTodayWh`;
@@ -416,16 +417,16 @@ const resetValuesForDevice = (
     } else if (stateKey == "2") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv2EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv2EnergyTodaykWh`;
-      stateNamePower = `${productKey}.${deviceKey}.pvPower2`;
+      stateNamePower = `${productKey}.${deviceKey}.2`;
     } else if (stateKey == "pvPower3") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv3EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv3EnergyTodaykWh`;
-      stateNamePower = `${productKey}.${deviceKey}.pvPower3`;
+      stateNamePower = `${productKey}.${deviceKey}.3`;
     } else if (stateKey == "pvPower4") {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.solarInputPv4EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.solarInputPv4EnergyTodaykWh`;
-      stateNamePower = `${productKey}.${deviceKey}.pvPower4`;
-    }else {
+      stateNamePower = `${productKey}.${deviceKey}.4`;
+    } else {
       stateNameEnergyWh = `${productKey}.${deviceKey}.calculations.${stateKey}EnergyTodayWh`;
       stateNameEnergykWh = `${productKey}.${deviceKey}.calculations.${stateKey}EnergyTodaykWh`;
       stateNamePower = `${productKey}.${deviceKey}.${stateKey}Power`;

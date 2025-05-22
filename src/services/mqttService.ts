@@ -1096,7 +1096,7 @@ const onMessage = async (topic: string, message: Buffer): Promise<void> => {
             const manuallyCheckedKeys = ["pvPower3", "pvPower4", "solarPower3", "solarPower4"];
             if (!manuallyCheckedKeys.includes(key)) {
                  adapter?.log.debug(
-                    `[onMessage] Device: ${productName || productKey + '.' + deviceKey}, UNKNOWN Mqtt Property in 'obj.properties': ${key} with value ${JSON.stringify(value)}`
+                    `[onMessage] Device: ${productName || productKey + "." + deviceKey}, UNKNOWN Mqtt Property in 'obj.properties': ${key} with value ${JSON.stringify(value)}`
                  );
             }
           }
@@ -1322,7 +1322,7 @@ export const setInputLimit = async (
       limit = 0;
     }
 
-    let maxLimit = 900;
+    let maxLimit = 1000;
     const currentLimit = (
       await adapter.getStateAsync(productKey + "." + deviceKey + ".inputLimit")
     )?.val;
@@ -1335,10 +1335,11 @@ export const setInputLimit = async (
 
     if (productName?.includes("hyper")) {
       maxLimit = 1200;
-    } else if (productName?.includes("ace")) {
-        maxLimit = 1800; // Example, adjust if known
+    } else if (productName?.includes("2400")) {
+        maxLimit = 2400; // Example, adjust if known
+    } else if (productName?.includes("pro")) {
+        maxLimit = 1000; // Example, adjust if known
     }
-
 
     if (productName?.includes("ace")) {
       // Das Limit kann nur in 100er Schritten gesetzt werden for ACE
@@ -1660,7 +1661,9 @@ export const connectCloudMqttClient = (_adapter: ZendureSolarflow): void => {
             if (device.packList && device.packList.length > 0) {
               device.packList.forEach(async (subDevice, subIndex) => { // Added subIndex for staggering
                 if (subDevice.productName?.toLocaleLowerCase() == "ace 1500") { // Optional chaining for productName
-                  adapter.log.debug(`[connectCloudMqttClient] Subscribing to ACE sub-device: ${subDevice.productKey}/${subDevice.deviceKey}`);
+                  if (adapter && adapter.log) {
+                    adapter.log.debug(`[connectCloudMqttClient] Subscribing to ACE sub-device: ${subDevice.productKey}/${subDevice.deviceKey}`);
+                  }
                   subscribeReportTopic(
                     subDevice.productKey,
                     subDevice.deviceKey,

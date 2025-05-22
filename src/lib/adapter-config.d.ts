@@ -26,6 +26,8 @@ declare global {
       useRestart: boolean;
       useFallbackService: boolean;
       snNumber: string;
+      offlineThresholdSeconds?: number;
+      useAppTopicStructure?: boolean;
     }
   }
 }
