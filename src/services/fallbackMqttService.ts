@@ -351,12 +351,13 @@ const onMessage = async (topic: string, message: Buffer): Promise<void> => {
       );
     }
 
+    // PV Power Inputs (obj.pvPowerX from MQTT, potentially reversed for app consistency)
     if (obj?.pvPower1 != null && obj?.pvPower1 != undefined) {
       updateSolarFlowState(
         adapter,
         productKey,
         deviceKey,
-        "pvPower2", // Reversed to adjust like offical app
+        "pvPower2", // Reversed to adjust like offical app (MQTT pvPower1 -> State pvPower2)
         obj.pvPower1
       );
     }
@@ -366,17 +367,40 @@ const onMessage = async (topic: string, message: Buffer): Promise<void> => {
         adapter,
         productKey,
         deviceKey,
-        "pvPower1", // Reversed to adjust like offical app
+        "pvPower1", // Reversed to adjust like offical app (MQTT pvPower2 -> State pvPower1)
         obj.pvPower2
       );
     }
 
+    // START: Added for pvPower3 and pvPower4
+    if (obj?.pvPower3 != null && obj?.pvPower3 != undefined) {
+      updateSolarFlowState(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower4", // Assuming reversal continues (MQTT pvPower3 -> State pvPower4)
+        obj.pvPower3
+      );
+    }
+
+    if (obj?.pvPower4 != null && obj?.pvPower4 != undefined) {
+      updateSolarFlowState(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower3", // Assuming reversal continues (MQTT pvPower4 -> State pvPower3)
+        obj.pvPower4
+      );
+    }
+    // END: Added for pvPower3 and pvPower4
+
+    // Solar Power Inputs (obj.solarPowerX from MQTT, direct mapping)
     if (obj?.solarPower1 != null && obj?.solarPower1 != undefined) {
       updateSolarFlowState(
         adapter,
         productKey,
         deviceKey,
-        "pvPower1",
+        "pvPower1", // MQTT solarPower1 -> State pvPower1
         obj.solarPower1
       );
     }
@@ -386,10 +410,32 @@ const onMessage = async (topic: string, message: Buffer): Promise<void> => {
         adapter,
         productKey,
         deviceKey,
-        "pvPower2",
+        "pvPower2", // MQTT solarPower2 -> State pvPower2
         obj.solarPower2
       );
     }
+
+    // START: Added for solarPower3 and solarPower4
+    if (obj?.solarPower3 != null && obj?.solarPower3 != undefined) {
+      updateSolarFlowState(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower3", // MQTT solarPower3 -> State pvPower3
+        obj.solarPower3
+      );
+    }
+
+    if (obj?.solarPower4 != null && obj?.solarPower4 != undefined) {
+      updateSolarFlowState(
+        adapter,
+        productKey,
+        deviceKey,
+        "pvPower4", // MQTT solarPower4 -> State pvPower4
+        obj.solarPower4
+      );
+    }
+    // END: Added for solarPower3 and solarPower4
 
     if (obj?.remainOutTime != null && obj?.remainOutTime != undefined) {
       updateSolarFlowState(
