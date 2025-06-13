@@ -86,6 +86,22 @@ const solarflow800ProStates = import_sharedStates.sharedStates.concat([
       1: "AC input mode",
       2: "AC output mode"
     }
+  },
+  {
+    title: "pvPower3",
+    nameDe: "Leistung PV 3",
+    nameEn: "solar power channel 3",
+    type: "number",
+    role: "value.power",
+    unit: "W"
+  },
+  {
+    title: "pvPower4",
+    nameDe: "Leistung PV 4",
+    nameEn: "solar power channel 4",
+    type: "number",
+    role: "value.power",
+    unit: "W"
   }
 ]);
 // Annotate the CommonJS export names for ESM import in node:

@@ -81,7 +81,7 @@ const solarflow800ProControlStates = [
     read: true,
     write: true,
     min: 0,
-    max: 800,
+    max: 1e3,
     unit: "W"
   },
   {
