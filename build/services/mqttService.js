@@ -912,8 +912,8 @@ const setOutputLimit = async (adapter2, productKey, deviceKey, limit) => {
             }
             break;
           case "solarflow 800 pro":
-            if (limit > 800) {
-              limit = 800;
+            if (limit > 1e3) {
+              limit = 1e3;
             }
             break;
           case "solarflow 2400 ac":
@@ -948,7 +948,9 @@ const setInputLimit = async (adapter2, productKey, deviceKey, limit) => {
     if (productName == null ? void 0 : productName.includes("2400 ac")) {
       maxLimit = 2400;
     }
-    if (productName == null ? void 0 : productName.includes("solarflow 800")) {
+    if (productName == null ? void 0 : productName.includes("solarflow 800 pro")) {
+      maxLimit = 1000;
+    } else if (productName == null ? void 0 : productName.includes("solarflow 800")) {
       maxLimit = 800;
     }
     if (productName == null ? void 0 : productName.includes("ace")) {
