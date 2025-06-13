@@ -1229,8 +1229,8 @@ export const setOutputLimit = async (
             }
             break;
           case "solarflow 800 pro":
-            if (limit > 800) {
-              limit = 800;
+            if (limit > 1000) {
+              limit = 1000;
             }
             break;
           case "solarflow 2400 ac":
