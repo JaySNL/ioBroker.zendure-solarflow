@@ -1285,9 +1285,7 @@ export const setInputLimit = async (
 
     if (productName?.includes("solarflow 800 pro")) {
       maxLimit = 1000;
-    }
-
-    if (productName?.includes("solarflow 800")) {
+    } else if (productName?.includes("solarflow 800")) { // Note the "else if"
       maxLimit = 800;
     }
 
