@@ -61,7 +61,7 @@ export const solarflow800ProControlStates: ISolarflowState[] = [
     read: true,
     write: true,
     min: 0,
-    max: 800,
+    max: 1000,
     unit: "W",
   },
   {
