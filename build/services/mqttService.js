@@ -949,7 +949,7 @@ const setInputLimit = async (adapter2, productKey, deviceKey, limit) => {
       maxLimit = 2400;
     }
     if (productName == null ? void 0 : productName.includes("solarflow 800 pro")) {
-      maxLimit = 1000;
+      maxLimit = 1e3;
     } else if (productName == null ? void 0 : productName.includes("solarflow 800")) {
       maxLimit = 800;
     }
