@@ -1287,6 +1287,10 @@ export const setInputLimit = async (
       maxLimit = 800;
     }
 
+    if (productName?.includes("solarflow 800 pro")) {
+      maxLimit = 1000;
+    }
+
     if (productName?.includes("ace")) {
       // Das Limit kann nur in 100er Schritten gesetzt werden
       limit = Math.ceil(limit / 100) * 100;
